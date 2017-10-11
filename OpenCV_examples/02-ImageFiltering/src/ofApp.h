@@ -1,38 +1,45 @@
 #pragma once
 
 /*
-This is perspective distortion removing example, which uses ofxOpenCv addon.
-It restores geometry of the flat rectangle image distorted by perspective effect.
+This is example of image filtering, which uses ofxOpenCv addon.
+It thresholds original image,
+and also smooths and thresolds original image.
+You can see that smooth+threshold gives binary image with smooth boundaries,
+which is easies for further analyzing.
 
-To achieve this, we specify four corner points of the image inside input image:
-  A----B
- /      \
-D--------C
+Images on the screen:
+[Original image]	[Thresholded original image]
+[Smoothed image]	[Thresholded smoothed image]
 
 --------------------------------------
 How to make openFrameworks project:
 - Use Project generator for creating an empty project with linked ofxOpenCv addon.
 - Copy this sources to src folder of the project.
-- Copy copy image table.png into bin/data folder of the project.
+- Copy copy image sunflower.png into bin/data folder of the project.
 --------------------------------------
 
-It's the example 03-PerspectiveRemoving from the book 
+It's the example 02-ImageFiltering from the book 
 "Mastering openFrameworks: Creative Coding Demystified",
 Chapter 9 - Computer Vision with OpenCV
+
+Credits:
+Image "sunflower.png" by ©iStockphoto.com/Andrew Johnson.
 */
 
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 
-class testApp : public ofBaseApp{
+
+class ofApp : public ofBaseApp{
 
 public:
 	void setup();
 	void update();
 	void draw();
 
-	ofxCvColorImage image;	
-	ofxCvColorImage image2;
+	ofxCvColorImage image;			//Original image
+	ofxCvGrayscaleImage grayImage;	//Grayscaled original image
+	ofxCvGrayscaleImage filtered;	//Image used for filtering
 
 	void keyPressed(int key);
 	void keyReleased(int key);

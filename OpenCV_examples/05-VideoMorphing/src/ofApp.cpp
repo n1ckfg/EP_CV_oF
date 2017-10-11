@@ -1,8 +1,8 @@
-#include "testApp.h"
+#include "ofApp.h"
 #include "highgui.h"
 
 //--------------------------------------------------------------
-void testApp::setup()
+void ofApp::setup()
 {
 	morphValue = 0;
 
@@ -50,7 +50,7 @@ void testApp::setup()
 	//--------------------------------------------------------------------------
 	//ATTENTION: Lines flowX = &iplX; and flowY = &iplY; can raise runtime error, 
 	//caused by small bug in ofxOpenCV. 
-	//So before running the example, fix it, as it described in testApp.h file
+	//So before running the example, fix it, as it described in ofApp.h file
 	//--------------------------------------------------------------------------
 
 	//Flow image
@@ -88,13 +88,13 @@ void multiplyByScalar( ofxCvFloatImage &floatImage, float value )
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
 
 
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
 	ofBackground( 255, 255, 255);	//Set the background color
 	int w = gray1.width;
 	int h = gray1.height;
@@ -136,7 +136,7 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 //Making image morphing
-void testApp::updateMorph( float morphValue, int morphImageIndex )
+void ofApp::updateMorph( float morphValue, int morphImageIndex )
 {
 	mapX.allocate( w, h );
 	mapY.allocate( w, h );
@@ -183,7 +183,7 @@ void testApp::updateMorph( float morphValue, int morphImageIndex )
 //--------------------------------------------------------------
 //Inverting the mapping (mapX, mapY), with antialiasing.
 //TODO: probably there is a simpler way to do this.
-void testApp::inverseMapping( ofxCvFloatImage &mapX, ofxCvFloatImage &mapY ){
+void ofApp::inverseMapping( ofxCvFloatImage &mapX, ofxCvFloatImage &mapY ){
 	if ( !fx.bAllocated ) {
 		fx.allocate( w, h );
 		fy.allocate( w, h );
@@ -315,7 +315,7 @@ void testApp::inverseMapping( ofxCvFloatImage &mapX, ofxCvFloatImage &mapY ){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
 	if ( key == '1' ) {		//Select first image to morph
 		morphImageIndex = 1;
 		updateMorph( morphValue, morphImageIndex );
@@ -327,42 +327,42 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void ofApp::keyReleased(int key){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
 	morphValue = ofMap( x, 0, ofGetWidth(), 0, 1 );
 	updateMorph( morphValue, morphImageIndex );
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 	mouseMoved( x, y );
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h){
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }

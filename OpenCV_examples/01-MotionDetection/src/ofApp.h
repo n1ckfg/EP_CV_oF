@@ -24,7 +24,7 @@ Chapter 9 - Computer Vision with OpenCV
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 
-class testApp : public ofBaseApp{
+class ofApp : public ofBaseApp{
 
 public:
 	void setup();

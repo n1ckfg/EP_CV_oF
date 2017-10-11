@@ -52,7 +52,7 @@ Images "hands1.png" and "hands2.png" by Igor Sodazot.
 #include "ofxOpenCv.h"
 using namespace cv;
 
-class testApp : public ofBaseApp{
+class ofApp : public ofBaseApp{
 
 public:
 	void setup();
