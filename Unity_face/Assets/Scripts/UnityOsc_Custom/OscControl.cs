@@ -38,7 +38,7 @@ public class OscControl : MonoBehaviour {
 	public int rxBufferSize = 1024;
 	public int sleepMs = 10;
 
-	[HideInInspector] Vector3 pos = Vector3.zero;
+	[HideInInspector] public Vector3 pos = Vector3.zero;
 
 	private OSCServer myServer;
 
