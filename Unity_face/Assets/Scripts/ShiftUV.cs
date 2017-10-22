@@ -9,34 +9,23 @@ public class ShiftUV : MonoBehaviour {
 	public float posScaler = 1f;
 	public float rotScaler = 1f;
 
-	[HideInInspector] public Vector3 rect = Vector3.zero;
-
 	private Vector3 lastPos = Vector3.zero;
 	private Vector3 deltaPos = Vector3.zero;
 	private Vector3 deltaRot = Vector3.zero;
 
-	void Update() {
-		if (target != null) {
-			deltaPos = (target.position - lastPos) * posScaler;
-			deltaRot = (target.position - lastPos) * rotScaler;
+    void Update() {
+        if (target != null) {
+            Vector3 d = target.position - lastPos;
+            deltaPos = d * posScaler;
+            deltaRot = d * rotScaler;
 
-			ren.material.SetVector("_Ctl", new Vector3(target.position.x * uvScaler, target.position.y * uvScaler, 0f));
+            ren.material.SetVector("_Ctl", new Vector3(target.position.x * uvScaler, target.position.y * uvScaler, 0f));
 
-			transform.Rotate(deltaRot.y, 0f, -deltaRot.x);
-			transform.Translate(-deltaPos.x, 0f, deltaPos.y);
+            transform.Rotate(deltaRot.y, 0f, -deltaRot.x);
+            transform.Translate(-deltaPos.x, 0f, deltaPos.y);
 
-			lastPos = target.position;
-		} else {
-			/*
-			deltaRot = (rect - lastPos) * rotScaler;
-
-			ren.material.SetVector("_Ctl", new Vector3(rect.x * uvScaler, rect.y * uvScaler, 0f));
-
-			transform.Rotate(deltaRot.y, 0f, -deltaRot.x);
-
-			lastPos = rect;
-			*/
-		}
+            lastPos = target.position;
+        }
 	}
 
 }

@@ -11,7 +11,7 @@ namespace DlibFaceLandmarkDetectorSample {
 
 	public class FaceTrackCoords : MonoBehaviour {
 
-		public ShiftUV shiftUv;
+        public Vector2 trackCoords = Vector2.zero;
 		public float scaleCoords = 0f;
 		WebCamTexture webCamTexture;
 		WebCamDevice webCamDevice;
@@ -24,6 +24,7 @@ namespace DlibFaceLandmarkDetectorSample {
 		FaceLandmarkDetector faceLandmarkDetector;
 		Texture2D texture2D;
 		bool flip;
+           
 
 		void Start() {
 			faceLandmarkDetector = new FaceLandmarkDetector(Utils.getFilePath("shape_predictor_68_face_landmarks.dat"));
@@ -161,7 +162,7 @@ namespace DlibFaceLandmarkDetectorSample {
 				foreach (var rect in detectResult) {
 					float x = (rect.x - (float) width/2f) * scaleCoords;
 					float y = (rect.y - (float) height/2f) * scaleCoords;
-					shiftUv.rect = new Vector2(x,y);
+					trackCoords = new Vector2(x,y);
 
 					// detect landmark points
 					List<Vector2> points = faceLandmarkDetector.DetectLandmark(rect);
