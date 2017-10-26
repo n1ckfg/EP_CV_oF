@@ -25,6 +25,6 @@ void ofApp::draw() {
     ofSetupScreenOrtho(ofGetWidth(), ofGetHeight(), -100, +100);
     ofEnableDepthTest();
     motionAmplifier.draw(cam);
-//    motionAmplifier.drawMesh();
+    motionAmplifier.drawMesh();
     ofDisableDepthTest();
 }

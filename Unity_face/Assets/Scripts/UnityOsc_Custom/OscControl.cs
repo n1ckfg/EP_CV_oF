@@ -88,6 +88,7 @@ public class OscControl : MonoBehaviour {
 
 		OSCMessage msg = pckt.Data[0] as UnityOSC.OSCMessage;
 		pos = new Vector2((float) msg.Data[2], (float) msg.Data[3]);
+		pos.x = -pos.x;
 		Debug.Log(msg.Data[0] + ", " + msg.Data[1] + ", " + msg.Data[2] + ", " + msg.Data[3] + ", " + msg.Data[4]);
 
 		/*

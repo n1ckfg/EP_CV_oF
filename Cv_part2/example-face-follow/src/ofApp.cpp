@@ -12,6 +12,8 @@ void ofApp::setup() {
 	cam.setup(640, 480);
 	sunglasses.load("sunglasses.png");
 	ofEnableAlphaBlending();
+    
+    sender.setup(HOST, PORT);
 }
 
 void ofApp::update() {
@@ -38,5 +40,18 @@ void ofApp::draw() {
 		ofDrawBitmapStringHighlight(ofToString(finder.getLabel(i)), 0, 0);
 		ofDrawLine(ofVec2f(), toOf(finder.getVelocity(i)) * 10);
 		ofPopMatrix();
+        
+        sendOsc(i, object.x, object.y, 0);
 	}
+}
+
+void ofApp::sendOsc(int index, float x, float y, float z) {
+    ofxOscMessage m;
+    m.setAddress("/" + oscAddress);
+    m.addStringArg(hostName);
+    m.addIntArg(index);
+    m.addFloatArg(x);
+    m.addFloatArg(y);
+    m.addFloatArg(z);
+    sender.sendMessage(m);
 }

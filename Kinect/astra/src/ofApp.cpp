@@ -25,7 +25,7 @@ void ofApp::setup(){
 	// If you are using an Astra Pro camera and only see a black screen, try
 	// commenting out the above initColorStream() call and use
 	// initVideoGrabber() instead
-//	astra.initVideoGrabber();
+	// astra.initVideoGrabber();
 
 	astra.initDepthStream();
 	astra.initPointStream();
